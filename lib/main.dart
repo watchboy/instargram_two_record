@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AuthScreen(),
-      // home: HomePage(),
+      //home: AuthScreen(),
+      home: HomePage(),
       theme: ThemeData(primarySwatch: white), // 모든화면에서 앱바 색깔을 통일시켜서 보여주고 싶기떄문, 앱의 기본색깔 지정
     );
   }

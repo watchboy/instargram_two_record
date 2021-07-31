@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fbsob.instagramex.instagram_two_record">
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+
    <application
         android:label="instagram_two_record"
         android:icon="@mipmap/ic_launcher">

@@ -148,7 +148,7 @@ class _ProfileBodyState extends State<ProfileBody>
           duration: duration,
           transform: (Matrix4.translationValues(_rightImagesPageMargin, 0, 0)),
           curve: Curves.fastOutSlowIn,
-          child: _images(),
+          child: _images2(),
         )
       ],
     ));
@@ -167,7 +167,19 @@ class _ProfileBodyState extends State<ProfileBody>
       childAspectRatio: 1,
     );
   }
-
+  GridView _images2() {
+    return GridView.count(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      children: List.generate(
+          30,
+              (index) => CachedNetworkImage(
+              fit: BoxFit.cover,
+              imageUrl: 'https://picsum.photos/id/${index + 10}/100/100')),
+      crossAxisCount: 3,
+      childAspectRatio: 1,
+    );
+  }
   Row _tapButtons() {
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceAround, //아이콘 양쪽에 동일간격의 패딩
