@@ -42,8 +42,10 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>
-    <string>카메라 좀 써도 될까요?</string>
+    <string>camera</string>
     <key>NSMicrophoneUsageDescription</key>
-    <string>마이크 좀 써도 될까요?</string>
+    <string>microphone?</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>gallery?</string>
 </dict>
 </plist>

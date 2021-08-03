@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:app_settings/app_settings.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_two_record/screens/camera_screen.dart';
 import 'package:instagram_two_record/screens/feed_screen.dart';
@@ -76,9 +79,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _openCamera() async {
-    if (await checkIfPermissionGranted(context))
+    if (await checkIfPermissionGranted(context)) {
+      final cameras = await availableCameras();
+
+
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => CameraScreen()));
+          .push(MaterialPageRoute(builder: (context) => CameraScreen(cameras)));
+    }
     else {
       SnackBar snackBar = SnackBar(
         content: Text('사진, 파일, 마이크 접근을 허용 해주셔야 사용 가능합니다.'),
@@ -98,7 +105,9 @@ class _HomePageState extends State<HomePage> {
 
   Future<bool> checkIfPermissionGranted(BuildContext context) async {
     Map<Permission, PermissionStatus> statuses =
-        await [Permission.camera, Permission.microphone].request();
+        await [Permission.camera, Permission.microphone,
+          Platform.isIOS?
+          Permission.photos:Permission.storage].request();
     bool permitted = true;
 
     statuses.forEach((permission, permissionStatus) {
